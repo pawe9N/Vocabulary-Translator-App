@@ -8,6 +8,13 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Name="AppTItle" Text="Vocabulary Translator App" FontSize="48"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBox Name="ToTranslateText" Width="200" Text="" />
+                <TextBlock Name="TranslatedText" Width="200" Text="" HorizontalAlignment="Center" Margin="20,0,0,0"/>
+            </StackPanel>
+            <Button Name="Translate" Content="Translate" Click="Translate_Click" HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>
