@@ -5,9 +5,12 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Vocabulary_Translator_App.Class;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,32 +32,63 @@ namespace Vocabulary_Translator_App
         {
             this.InitializeComponent();
         }
-        public async Task<string> TranslateText(string input, string languagePair)
+
+        //translate two string with translate google app
+        public void GTranslateText()
         {
-            WebRequest request = WebRequest.Create(String.Format("http://www.google.com/translate_t?hl=en&ie=UTF8&text={0}&langpair={1}", input, languagePair));
-            WebResponse response = await request.GetResponseAsync(); ;
-            Stream data = response.GetResponseStream();
-            string html = String.Empty;
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            using (StreamReader stream = new StreamReader(data, Encoding.GetEncoding(28592)))
+            if (!String.IsNullOrEmpty(ToTranslateText.Text))
             {
-                html = stream.ReadToEnd();
+                //erasing white spaces from string thats appear more then one time
+                Regex regex = new Regex("[ ]{2,}");
+                string toTranslateText = regex.Replace(ToTranslateText.Text.Trim(), " ");
+
+                //creating language pair to translation
+                string languagePair = GTranslator.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
+                
+                //translation
+                GTranslator translator = new GTranslator(toTranslateText, languagePair);
+
+                //added translation to textblock
+                TranslatedText.Text = translator.translation;
+                ToTranslateText.Text = toTranslateText;
             }
-            html = html.Substring(html.IndexOf("<span title=\"") + "<span title=\"".Length);
-            html = html.Substring(html.IndexOf(">") + 1);
-            html = html.Substring(0, html.IndexOf("</span>"));
-
-            return html;
-
         }
 
+        //translation will start after button's click 
         private void Translate_Click(object sender, RoutedEventArgs e)
         {
-            string toTranslateText = ToTranslateText.Text;
+            GTranslateText();
+        }
 
-            var translatedText = Task.Run(() => TranslateText(toTranslateText, "en|pl")).Result;
+        //translation will start after pressing Enter key 
+        private void Translate_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                GTranslateText();
+            }
+        }
+        
+        //changing name for fromLanguageButton from menu 
+        private void ChangingFromLanguageName(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (sender as MenuFlyoutItem);
+            fromLanguageButton.Content = item.Text;
+        }
 
-            TranslatedText.Text = translatedText;
+        //changing name for toLanguageButton from menu 
+        private void ChangingToLanguageName(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (sender as MenuFlyoutItem);
+            toLanguageButton.Content = item.Text;
+        }
+
+        //swaping language pair
+        private void SwapingLanguages(object sender, RoutedEventArgs e)
+        {
+            string temp = toLanguageButton.Content.ToString();
+            toLanguageButton.Content = fromLanguageButton.Content.ToString();
+            fromLanguageButton.Content = temp;
         }
     }
 }

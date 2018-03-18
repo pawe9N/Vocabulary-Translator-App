@@ -8,13 +8,82 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel HorizontalAlignment="Center">
-            <TextBlock Name="AppTItle" Text="Vocabulary Translator App" FontSize="48"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                <TextBox Name="ToTranslateText" Width="200" Text="" />
-                <TextBlock Name="TranslatedText" Width="200" Text="" HorizontalAlignment="Center" Margin="20,0,0,0"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320*" />
+                <ColumnDefinition Width="320*"/>
+                <ColumnDefinition Width="320*"/>
+                <ColumnDefinition Width="320*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Translate" FontSize="32" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button Grid.Column="1" Content="My Dictionaries" FontSize="32" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button Grid.Column="2" Content="Top words" FontSize="32" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button Grid.Column="3" Content="Export to CSV" FontSize="32" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" KeyDown="Translate_KeyDown" Width="720" Height="375">
+            <TextBlock Name="AppTItle" Text="Vocabulary Translator App" FontSize="60" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+            <Grid>
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBox Name="ToTranslateText"
+                             Width="300"
+                             Height="100"
+                             Text=""
+                             FontSize="20"
+                             MaxWidth="300"
+                             TextWrapping="Wrap"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             ScrollViewer.VerticalScrollMode="Auto"
+                             MaxLength="64"/>
+                    <Button Name="fromLanguageButton" Content="English" Width="302">
+                    <Button.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                                <MenuFlyoutItem Text="English" Click="ChangingFromLanguageName"/>
+                                <MenuFlyoutItem Text="Polish" Click="ChangingFromLanguageName"/>
+                                <MenuFlyoutItem Text="Spanish" Click="ChangingFromLanguageName"/>
+                                <MenuFlyoutItem Text="French" Click="ChangingFromLanguageName"/>
+                                <MenuFlyoutItem Text="German" Click="ChangingFromLanguageName"/>
+                            </MenuFlyout>
+                    </Button.Flyout>
+                    </Button>
+                </StackPanel>
+                <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Content="🡰 🡲" FontSize="18" Width="100" Click="SwapingLanguages"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <TextBlock Name="TranslatedText"
+                               Width="300" 
+                               Height="100"
+                               Text="" 
+                               FontSize="20"
+                               TextWrapping="Wrap"
+                               ScrollViewer.VerticalScrollBarVisibility="Auto"
+                               ScrollViewer.VerticalScrollMode="Auto"
+                               MaxLines="2"
+                               Padding="10, 5,  10, 0"/>
+                    </Border>
+                    <Button Name="toLanguageButton" Content="Polish" HorizontalAlignment="Right" Width="302" >
+                        <Button.Flyout>
+                            <MenuFlyout Placement="Bottom">
+                                <MenuFlyoutItem Text="Polish" Click="ChangingToLanguageName"/>
+                                <MenuFlyoutItem Text="English" Click="ChangingToLanguageName"/>
+                                <MenuFlyoutItem Text="Spanish" Click="ChangingToLanguageName"/>
+                                <MenuFlyoutItem Text="French" Click="ChangingToLanguageName"/>
+                                <MenuFlyoutItem Text="German" Click="ChangingToLanguageName"/>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Button Name="Translate" Content="Translate" Click="Translate_Click" Width="720" FontSize="28" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,20,0,10"/>
+            <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Name="AddToDatabaseButton" Content="Add translation to database" FontSize="18" Width="250" />
             </StackPanel>
-            <Button Name="Translate" Content="Translate" Click="Translate_Click" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>
