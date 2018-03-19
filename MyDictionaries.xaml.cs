@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Vocabulary_Translator_App.Class;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,28 @@ namespace Vocabulary_Translator_App
         public MyDictionaries()
         {
             this.InitializeComponent();
+            this.SettingTablesList();
+        }
+
+        public static void CreatingListItems(ListView list, string content)
+        {
+            list.Items.Add(new ListViewItem().Content = content);
+        }
+
+        public void SettingTablesList()
+        {
+            DatabaseConnection conDB = new DatabaseConnection();
+            List<string> tables = conDB.GettingTables();
+
+            foreach(string table in tables)
+            {
+                CreatingListItems(Tables, table);
+            }
+
+            if(Tables.Items.Count > 0)
+            {
+                Tables.SelectedItem = Tables.Items[0];
+            }
         }
     }
 }

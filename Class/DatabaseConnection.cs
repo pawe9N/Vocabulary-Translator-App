@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 
 namespace Vocabulary_Translator_App.Class
@@ -6,6 +7,10 @@ namespace Vocabulary_Translator_App.Class
     class DatabaseConnection
     {
         private string TableName { get; set; }
+
+        public DatabaseConnection()
+        {
+        }
 
         public DatabaseConnection(string languagePair)
         {
@@ -45,6 +50,28 @@ namespace Vocabulary_Translator_App.Class
 
                 db.Close();
             }
+        }
+
+        //geting value from database
+        public List<String> GettingTables()
+        {
+            List<String> tables = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=./Vocabulary.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_sequence';", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+                while (query.Read())
+                {
+                    tables.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return tables;
         }
 
     }
