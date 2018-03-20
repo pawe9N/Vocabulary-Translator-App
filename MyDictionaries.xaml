@@ -8,16 +8,22 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Width="720" Height="380" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+        <StackPanel Width="720" Height="384" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
             <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="380" Height="380"/>
             <StackPanel Width="240" Orientation="Vertical">
                 <Line Stroke="Black" X1="0" X2="480" Y1="1" Y2="1"/>
                 <TextBlock Text="Tables" FontSize="48" Height="80" TextAlignment="Center"/>
                 <Line Stroke="Black" X1="0" X2="240" Y1="1" Y2="1"/>
-
-                <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-                    <ListView Name="Tables" Height="298" SelectionMode="Single" BorderBrush="Black"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView Name="Tables" Height="298" SelectionMode="Single" BorderBrush="Black" SelectionChanged="Tables_SelectionChanged">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
                 </ScrollViewer>
+                <Line Stroke="Black" X1="0" X2="240" Y1="1" Y2="1"/>
             </StackPanel>
             <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="380" Height="380"/>
             <StackPanel Width="474" VerticalAlignment="Top">
@@ -30,6 +36,18 @@
                     <TextBlock Text="Translation" FontSize="26" TextAlignment="Center" Width="232"/>
                 </StackPanel>
                 <Line Stroke="Black" X1="0" X2="480" Y1="1" Y2="1"/>
+                <StackPanel Orientation="Horizontal" Width="480">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ListView Name="Words" Height="298" Width="480" SelectionMode="Single" BorderBrush="Black" VerticalAlignment="Top">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </ScrollViewer>
+                </StackPanel>
+                <Line Stroke="Black" X1="0" X2="474" Y1="1" Y2="1"/>
             </StackPanel>
             <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="380" Height="380"/>
         </StackPanel>

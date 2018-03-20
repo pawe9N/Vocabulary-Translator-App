@@ -37,24 +37,5 @@ namespace Vocabulary_Translator_App.Class
 
             return html;
         }
-
-        //taking two language codes and creating language pair from them
-        public static string CreatingLangugePair(string fromLanguageCode, string toLanguageCode)
-        {
-            string languagePair = CreatingLangugeCode(fromLanguageCode) + "|" + CreatingLangugeCode(toLanguageCode);
-
-            return languagePair;
-        }
-
-        //choosing codes for signle language
-        private static string CreatingLangugeCode(string language)
-        {
-            if (language == "Polish") { return "pl"; }
-            else if (language == "English") { return "en"; }
-            else if (language == "Spanish") { return "es"; }
-            else if (language == "French") { return "fr"; }
-            else if (language == "German") { return "de"; }
-            else { return null; }
-        }
     }
 }

@@ -32,7 +32,7 @@ namespace Vocabulary_Translator_App
                 string toTranslateText = regex.Replace(ToTranslateText.Text.Trim(), " ");
 
                 //creating language pair to translation
-                string languagePair = GTranslator.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
+                string languagePair = StringOperation.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
 
                 //translation
                 GTranslator translator = new GTranslator(toTranslateText, languagePair);
@@ -85,7 +85,7 @@ namespace Vocabulary_Translator_App
         {
             if (!String.IsNullOrEmpty(TranslatedText.Text))
             {
-                string languagePair = GTranslator.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
+                string languagePair = StringOperation.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
                 languagePair = languagePair.Replace("|", "");
 
                 DatabaseConnection dbCon = new DatabaseConnection(languagePair);

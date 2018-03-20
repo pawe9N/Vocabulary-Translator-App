@@ -74,5 +74,26 @@ namespace Vocabulary_Translator_App.Class
             return tables;
         }
 
+        public List<String> GettingRows(string table)
+        {
+            List<String> rows = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=./Vocabulary.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand(String.Format("SELECT Word, Translation FROM {0};", table), db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+                while (query.Read())
+                {
+                    rows.Add(query.GetString(0) + " ==> " + query.GetString(1));
+                }
+
+                db.Close();
+            }
+
+            return rows;
+        }
+
     }
 }

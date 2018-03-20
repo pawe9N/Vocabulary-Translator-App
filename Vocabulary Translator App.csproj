@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Class\DatabaseConnection.cs" />
     <Compile Include="Class\GTranslator.cs" />
+    <Compile Include="Class\StringOperation.cs" />
     <Compile Include="ExportToCSV.xaml.cs">
       <DependentUpon>ExportToCSV.xaml</DependentUpon>
     </Compile>

@@ -27,6 +27,8 @@ namespace Vocabulary_Translator_App
         {
             this.InitializeComponent();
             this.SettingTablesList();
+            this.ClearingRows(Words);
+            this.SettingRows();
         }
 
         public static void CreatingListItems(ListView list, string content)
@@ -39,15 +41,38 @@ namespace Vocabulary_Translator_App
             DatabaseConnection conDB = new DatabaseConnection();
             List<string> tables = conDB.GettingTables();
 
-            foreach(string table in tables)
+            foreach (string table in tables)
             {
-                CreatingListItems(Tables, table);
+                CreatingListItems(Tables, StringOperation.TableToLanguages(table));
             }
 
-            if(Tables.Items.Count > 0)
+            if (Tables.Items.Count > 0)
             {
                 Tables.SelectedItem = Tables.Items[0];
             }
+        }
+
+        public void SettingRows()
+        {
+            DatabaseConnection conDB = new DatabaseConnection();
+            List<string> rows = conDB.GettingRows(StringOperation.LanguagesToTable(Tables.SelectedItem.ToString()));
+
+            foreach (string item in rows)
+            {
+                 CreatingListItems(Words, item);
+            }
+
+        }
+
+        public void ClearingRows(ListView List)
+        {
+            List.Items.Clear();
+        }
+
+        private void Tables_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ClearingRows(Words);
+            SettingRows();
         }
     }
 }
