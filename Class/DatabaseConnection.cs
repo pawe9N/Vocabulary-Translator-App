@@ -44,7 +44,7 @@ namespace Vocabulary_Translator_App.Class
 
                 //inserting value
                 //used parameterized query to prevent SQL injection attacks
-                SqliteCommand insertCommand = new SqliteCommand(String.Format("INSERT INTO {0}(Word, Translation) VALUES (@Word, @Translation);", this.TableName), db);
+                SqliteCommand insertCommand = new SqliteCommand(String.Format("INSERT INTO {0}(Word,Translation) SELECT @Word, @Translation WHERE NOT EXISTS(SELECT Word FROM {0} WHERE Word = @Word); ", this.TableName), db);
                 insertCommand.Parameters.AddWithValue("@Word", toTranslateText);
                 insertCommand.Parameters.AddWithValue("@Translation", translatedText);
                 insertCommand.ExecuteReader();
@@ -107,7 +107,7 @@ namespace Vocabulary_Translator_App.Class
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand(String.Format("SELECT Word FROM {0} WHERE Word = {1};", table, word), db);
+                SqliteCommand selectCommand = new SqliteCommand(String.Format("SELECT Word FROM {0} WHERE Word = '{1}';", table, word), db);
                 SqliteDataReader query = selectCommand.ExecuteReader();
                 while (query.Read())
                 {
@@ -132,7 +132,7 @@ namespace Vocabulary_Translator_App.Class
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand(String.Format("UPDATE {0} SET Count = Count + 1 WHERE Word = {1};", table, word), db);
+                SqliteCommand selectCommand = new SqliteCommand(String.Format("UPDATE {0} SET Count = Count + 1 WHERE Word = '{1}';", table, word), db);
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
                 db.Close();

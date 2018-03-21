@@ -85,13 +85,20 @@ namespace Vocabulary_Translator_App
         {
             if (!String.IsNullOrEmpty(TranslatedText.Text))
             {
+                string [] words = { ToTranslateText.Text.ToLower(), TranslatedText.Text.ToLower() };
+
                 string languagePair = StringOperation.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
                 languagePair = languagePair.Replace("|", "");
 
                 DatabaseConnection dbCon = new DatabaseConnection(languagePair);
-                dbCon.InsertingValue(ToTranslateText.Text, TranslatedText.Text);
+                dbCon.InsertingValue( words[0], words[1]);
 
-                MessageDialog msg = new MessageDialog(String.Format("Dodano {0} - {1} to {2} database!", ToTranslateText.Text, TranslatedText.Text, languagePair));
+                if(dbCon.SearchingForWord(languagePair, words[0]))
+                {
+                    dbCon.IncreasingValue(languagePair, words[0]);
+                }
+                
+                MessageDialog msg = new MessageDialog(String.Format("Dodano {0} - {1} to {2} database!", words[0], words[1], languagePair));
                 await msg.ShowAsync();
 
                 ToTranslateText.Text = "";
