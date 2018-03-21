@@ -6,11 +6,12 @@ namespace Vocabulary_Translator_App.Class
 {
     class DatabaseConnection
     {
-        private string TableName { get; set; }
 
         public DatabaseConnection()
         {
         }
+
+        private string TableName { get; set; }
 
         public DatabaseConnection(string languagePair)
         {
@@ -26,7 +27,7 @@ namespace Vocabulary_Translator_App.Class
                 db.Open();
 
                 //create table if not exist
-                String tableCommand = String.Format("CREATE TABLE IF NOT EXISTS {0}(Primary_Key INTEGER PRIMARY KEY AUTOINCREMENT, Word VARCHAR(64) NULL, Translation VARCHAR(64) NULL);", this.TableName.Replace("|", ""));
+                String tableCommand = String.Format("CREATE TABLE IF NOT EXISTS {0}(Primary_Key INTEGER PRIMARY KEY AUTOINCREMENT, Word VARCHAR(64) NULL, Translation VARCHAR(64) NULL, Count INT Default 0);", this.TableName.Replace("|", ""));
                 SqliteCommand createTable = new SqliteCommand(tableCommand, db);
                 createTable.ExecuteReader();
 
@@ -43,7 +44,7 @@ namespace Vocabulary_Translator_App.Class
 
                 //inserting value
                 //used parameterized query to prevent SQL injection attacks
-                SqliteCommand insertCommand = new SqliteCommand(String.Format("INSERT INTO {0} VALUES (NULL, @Word, @Translation);", this.TableName), db);
+                SqliteCommand insertCommand = new SqliteCommand(String.Format("INSERT INTO {0}(Word, Translation) VALUES (@Word, @Translation);", this.TableName), db);
                 insertCommand.Parameters.AddWithValue("@Word", toTranslateText);
                 insertCommand.Parameters.AddWithValue("@Translation", translatedText);
                 insertCommand.ExecuteReader();
@@ -74,6 +75,7 @@ namespace Vocabulary_Translator_App.Class
             return tables;
         }
 
+        //getting rows from database
         public List<String> GettingRows(string table)
         {
             List<String> rows = new List<string>();
@@ -95,5 +97,46 @@ namespace Vocabulary_Translator_App.Class
             return rows;
         }
 
+        //searching specific word
+        public bool SearchingForWord(string table, string word)
+        {
+            List<String> row = new List<string>();
+            bool found = false;
+
+            using (SqliteConnection db = new SqliteConnection("Filename=./Vocabulary.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand(String.Format("SELECT Word FROM {0} WHERE Word = {1};", table, word), db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+                while (query.Read())
+                {
+                    row.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            if (row.Count > 0)
+            {
+                found = true;
+            }
+
+            return found;
+        }
+
+        //increasing count
+        public void IncreasingValue(string table, string word)
+        {
+            using (SqliteConnection db = new SqliteConnection("Filename=./Vocabulary.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand(String.Format("UPDATE {0} SET Count = Count + 1 WHERE Word = {1};", table, word), db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
     }
 }
