@@ -7,8 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#EDC7B7"/>
+            <Setter Property="Foreground" Value="#AC3B61"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="#EEE2DC"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#123C69"/>
+            <Setter Property="FontFamily" Value="Forte"/>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Width="720" Height="384" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+        <StackPanel Width="720" Height="386" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
             <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="380" Height="380"/>
             <StackPanel Width="240" Orientation="Vertical">
                 <Line Stroke="Black" X1="0" X2="480" Y1="1" Y2="1"/>
@@ -19,6 +33,9 @@
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Background" Value="#EDC7B7"/>
+                                <Setter Property="Foreground" Value="#AC3B61"/>
+                                <Setter Property="FontFamily" Value="Forte"/>
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
@@ -32,16 +49,18 @@
                 <Line Stroke="Black" X1="0" X2="474" Y1="1" Y2="1"/>
                 <StackPanel Orientation="Horizontal" Width="480">
                     <TextBlock Text="Word" FontSize="26" TextAlignment="Center" Width="242"/>
-                    <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="33"/>
                     <TextBlock Text="Translation" FontSize="26" TextAlignment="Center" Width="232"/>
                 </StackPanel>
                 <Line Stroke="Black" X1="0" X2="480" Y1="1" Y2="1"/>
                 <StackPanel Orientation="Horizontal" Width="480">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <ListView Name="Words" Height="298" Width="480" SelectionMode="Single" BorderBrush="Black" VerticalAlignment="Top">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"> 
+                        <ListView Name="Words" Height="296" Width="480" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="Background" Value="#EDC7B7"/>
+                                    <Setter Property="Foreground" Value="#AC3B61"/>
+                                    <Setter Property="FontFamily" Value="Buxton Sketch"/>
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>

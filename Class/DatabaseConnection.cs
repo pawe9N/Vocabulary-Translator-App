@@ -88,7 +88,7 @@ namespace Vocabulary_Translator_App.Class
                 SqliteDataReader query = selectCommand.ExecuteReader();
                 while (query.Read())
                 {
-                    rows.Add(query.GetString(0) + " ==> " + query.GetString(1));
+                    rows.Add(query.GetString(0) + " ➤ " + query.GetString(1));
                 }
 
                 db.Close();
@@ -137,6 +137,29 @@ namespace Vocabulary_Translator_App.Class
 
                 db.Close();
             }
+        }
+
+        //getting words which have the highest ratio of translation
+        public List<String> SearchningWordsWithHighestCount(string table)
+        {
+            List<String> rows = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=./Vocabulary.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand(String.Format("SELECT Word, Translation, Count FROM {0} ORDER BY Count DESC LIMIT 5;", table), db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+                while (query.Read())
+                {
+                    rows.Add(query.GetString(0));
+                    rows.Add(query.GetString(1) + " ( " + query.GetString(2) + " times)");
+                }
+
+                db.Close();
+            }
+
+            return rows;
         }
     }
 }

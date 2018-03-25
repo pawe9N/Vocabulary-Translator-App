@@ -7,8 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#EDC7B7"/>
+            <Setter Property="Foreground" Value="#AC3B61"/>
+            <Setter Property="FontFamily" Value="Forte"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="#EEE2DC"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Buxton Sketch"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#123C69"/>
+            <Setter Property="FontFamily" Value="Forte"/>
+        </Style>
+    </Page.Resources>
+
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" KeyDown="Translate_KeyDown" Width="720" Height="380"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Name="AppTItle" Text="Vocabulary Translator App" FontSize="60" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+        <TextBlock Name="AppTItle" Text="Vocabulary Translator App" FontSize="58" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,20,0,20" />
         <Grid>
             <StackPanel HorizontalAlignment="Left">
                 <TextBox Name="ToTranslateText"
@@ -47,7 +65,8 @@
                                ScrollViewer.VerticalScrollBarVisibility="Auto"
                                ScrollViewer.VerticalScrollMode="Auto"
                                MaxLines="2"
-                               Padding="10, 5,  10, 0"/>
+                               Padding="10, 5,  10, 0"
+                               FontFamily="Buxton Sketch"/>
                 </Border>
                 <Button Name="toLanguageButton" Content="Polish" HorizontalAlignment="Right" Width="302" >
                     <Button.Flyout>

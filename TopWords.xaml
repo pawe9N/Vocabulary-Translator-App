@@ -7,7 +7,54 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#EDC7B7"/>
+            <Setter Property="Foreground" Value="#AC3B61"/>
+            <Setter Property="FontFamily" Value="Forte"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="#EEE2DC"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#123C69"/>
+            <Setter Property="FontFamily" Value="Forte"/>
+        </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="Background" Value="#EDC7B7"/>
+        </Style>
+    </Page.Resources>
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Width="720" Height="384" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+            <TextBlock Name="PageTitle" Text="Most translated words!" FontSize="40" TextAlignment="Center" Margin="0,0,0,20" FontWeight="Bold"/>
+            <Button Name="DictionariesButton"  Content="Dictionaries" Width="720" FontSize="30">
+                <Button.Flyout>
+                    <MenuFlyout x:Name="DictionariesMenu" Placement="Bottom"/>
+                </Button.Flyout>
+            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ListView Name="Words" Height="260" Width="240" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="#EDC7B7"/>
+                            <Setter Property="Foreground" Value="#AC3B61"/>
+                            <Setter Property="FontFamily" Value="Buxton Sketch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <ListView Name="Translation" Height="260" Width="240" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top" FontFamily="Forte">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="#EDC7B7"/>
+                            <Setter Property="Foreground" Value="#AC3B61"/>
+                            <Setter Property="FontFamily" Value="Buxton Sketch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

@@ -32,7 +32,7 @@ namespace Vocabulary_Translator_App.Class
         {
             string fromL = CodeToLanguage(table.Substring(0, 2));
             string toL = CodeToLanguage(table.Substring(2, 2));
-            string languages = String.Concat(fromL, " ==> ", toL);
+            string languages = String.Concat(fromL, " ➤ ", toL);
 
             return languages;
         }
@@ -57,5 +57,6 @@ namespace Vocabulary_Translator_App.Class
             else if (code == "de") { return "German"; }
             else { return null; }
         }
+
     }
 }

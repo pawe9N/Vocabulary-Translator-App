@@ -6,6 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#EDC7B7"/>
+            <Setter Property="Foreground" Value="#AC3B61"/>
+            <Setter Property="FontFamily" Value="Forte"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="#EEE2DC"/>
+        </Style>
+    </Page.Resources>
+
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
             <Grid.RowDefinitions>
