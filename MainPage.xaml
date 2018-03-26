@@ -13,9 +13,6 @@
             <Setter Property="Foreground" Value="#AC3B61"/>
             <Setter Property="FontFamily" Value="Forte"/>
         </Style>
-        <Style TargetType="StackPanel">
-            <Setter Property="Background" Value="#EEE2DC"/>
-        </Style>
     </Page.Resources>
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -35,7 +32,7 @@
             <Button Grid.Column="2" Content="Top words" FontSize="32" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="NavigateToTopWords"/>
             <Button Grid.Column="3" Content="Export to CSV" FontSize="32" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="NavigateToExportToCSV"/>
         </Grid>
-        <Frame Name="MyFrame" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="720" Height="384" Margin="0,150,0,0">
+        <Frame Name="MyFrame" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="720" Height="384" Margin="0,120,0,0">
 
         </Frame>
     </StackPanel>

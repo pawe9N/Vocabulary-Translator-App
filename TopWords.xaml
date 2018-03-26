@@ -12,11 +12,13 @@
             <Setter Property="Background" Value="#EDC7B7"/>
             <Setter Property="Foreground" Value="#AC3B61"/>
             <Setter Property="FontFamily" Value="Forte"/>
+            <Setter Property="FontSize" Value="28"/>
         </Style>
         <Style TargetType="StackPanel">
             <Setter Property="Background" Value="#EEE2DC"/>
         </Style>
         <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
             <Setter Property="Foreground" Value="#123C69"/>
             <Setter Property="FontFamily" Value="Forte"/>
         </Style>
@@ -34,13 +36,13 @@
                 </Button.Flyout>
             </Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <ListView Name="Words" Height="260" Width="240" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
+                <ListView Name="Words" Height="270" Width="240" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="Background" Value="#EDC7B7"/>
                             <Setter Property="Foreground" Value="#AC3B61"/>
                             <Setter Property="FontFamily" Value="Buxton Sketch"/>
+                            <Setter Property="FontSize" Value="26"/>
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
@@ -48,9 +50,9 @@
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="Background" Value="#EDC7B7"/>
                             <Setter Property="Foreground" Value="#AC3B61"/>
                             <Setter Property="FontFamily" Value="Buxton Sketch"/>
+                            <Setter Property="FontSize" Value="26"/>
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>

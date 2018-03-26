@@ -9,6 +9,7 @@
 
     <Page.Resources>
         <Style TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
             <Setter Property="Background" Value="#EDC7B7"/>
             <Setter Property="Foreground" Value="#AC3B61"/>
             <Setter Property="FontFamily" Value="Forte"/>
