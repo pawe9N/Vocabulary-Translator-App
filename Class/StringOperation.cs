@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vocabulary_Translator_App.Class
 {
     class StringOperation
     {
         public StringOperation()
-        {
-
-        }
+        { }
 
         //taking two language codes and creating language pair from them
         public static string CreatingLangugePair(string fromLanguageCode, string toLanguageCode)

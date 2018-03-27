@@ -37,9 +37,9 @@ namespace Vocabulary_Translator_App
 
             folder = await fp.PickSingleFolderAsync();
             if(folder != null)
-                ChoosenPathText.Text = folder.Path;
+                ChosenPathText.Text = folder.Path;
 
-            EnableExport(ChoosenDictionary.Text, ChoosenPathText.Text);
+            EnableExport(ChosenDictionary.Text, ChosenPathText.Text);
         }
 
         //enable button to make export to csv
@@ -78,16 +78,16 @@ namespace Vocabulary_Translator_App
         private void ChoosingDictionary(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = (sender as MenuFlyoutItem);
-            ChoosenDictionary.Text = item.Text;
+            ChosenDictionary.Text = item.Text;
 
-            EnableExport(ChoosenDictionary.Text, ChoosenPathText.Text);
+            EnableExport(ChosenDictionary.Text, ChosenPathText.Text);
         }
 
         //making export from database to csv file
         private async void ExportToCSVFile(object sender, RoutedEventArgs e)
         {
-            string dictionary = StringOperation.LanguagesToTable(ChoosenDictionary.Text);
-            string path = Path.Combine(ChoosenPathText.Text, dictionary+".csv");
+            string dictionary = StringOperation.LanguagesToTable(ChosenDictionary.Text);
+            string path = Path.Combine(ChosenPathText.Text, dictionary+".csv");
             
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Word, Translation");

@@ -25,10 +25,15 @@ namespace Vocabulary_Translator_App
     {
         public MyDictionaries()
         {
-            this.InitializeComponent();
-            this.SettingTablesList();
-            this.ClearingRows(Words);
-            this.SettingRows();
+            try
+            {
+                this.InitializeComponent();
+                this.SettingTablesList();
+                this.ClearingRows(Words);
+                this.SettingRows();
+            }   
+            catch
+            { }
         }
 
         public static void CreatingListItems(ListView list, string content)

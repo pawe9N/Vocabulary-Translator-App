@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="b57b13b8-0a11-41fd-8138-62e1b71060c8" Publisher="CN=Pawe9N" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="b57b13b8-0a11-41fd-8138-62e1b71060c8" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="17776PaweNadachowski.VocabularyTranslatorApp" Publisher="CN=C87A503F-2A04-454C-A15D-A9DBC8505CCA" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="d941f3e7-66c3-40cc-ae5e-a5647cbb07a2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Vocabulary Translator App</DisplayName>
-    <PublisherDisplayName>Pawe9N</PublisherDisplayName>
+    <PublisherDisplayName>Paweł Nadachowski</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>

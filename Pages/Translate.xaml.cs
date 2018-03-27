@@ -98,7 +98,7 @@ namespace Vocabulary_Translator_App
                     dbCon.IncreasingValue(languagePair, words[0]);
                 }
                 
-                MessageDialog msg = new MessageDialog(String.Format("Dodano {0} - {1} to {2} database!", words[0], words[1], languagePair));
+                MessageDialog msg = new MessageDialog(String.Format("Added '{0} ➤ {1}' to {2} database!", words[0], words[1], languagePair));
                 await msg.ShowAsync();
 
                 ToTranslateText.Text = "";

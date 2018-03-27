@@ -30,9 +30,9 @@
                     <MenuFlyout x:Name="DictionariesMenu" Placement="Bottom"/>
                 </Button.Flyout>
             </Button>
-            <TextBlock Name="ChoosenDictionary" Text="You choose ... dictionary" FontSize="42" FontWeight="SemiBold" HorizontalAlignment="Center" FontFamily="Buxton Sketch"/>
-            <Button Name="PathButton"  Content="Path chooser!" Width="720" FontSize="30" Click="ShowFolderPickerDialog"/>
-            <TextBlock Name="ChoosenPathText" Text="You choose ... path" FontSize="42" FontWeight="SemiBold" HorizontalAlignment="Center" FontFamily="Buxton Sketch"/>
+            <TextBlock Name="ChosenDictionary" Text="You selected ... dictionary" FontSize="42" FontWeight="SemiBold" HorizontalAlignment="Center" FontFamily="Buxton Sketch"/>
+            <Button Name="PathButton"  Content="Path chooser" Width="720" FontSize="30" Click="ShowFolderPickerDialog"/>
+            <TextBlock Name="ChosenPathText" Text="You selected ... path" FontSize="42" FontWeight="SemiBold" HorizontalAlignment="Center" FontFamily="Buxton Sketch"/>
             <Button Name="ExportButton"  Content="Export" Width="720" FontSize="30" IsEnabled="False" Click="ExportToCSVFile" Background="#AC3B61" Foreground="#EEE2DC"/>
         </StackPanel>
     </Grid>
