@@ -29,7 +29,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Width="720" Height="384" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
-            <TextBlock Name="PageTitle" Text="Most translated words!" FontSize="40" TextAlignment="Center" Margin="0,0,0,20" FontWeight="Bold"/>
+            <StackPanel Background="White">
+                <TextBlock Name="PageTitle" Text="Most translated words!" FontSize="50" TextAlignment="Center" Margin="0,0,0,10" FontWeight="Bold"/>
+            </StackPanel>
             <Button Name="DictionariesButton"  Content="Dictionaries" Width="720" FontSize="30">
                 <Button.Flyout>
                     <MenuFlyout x:Name="DictionariesMenu" Placement="Bottom"/>

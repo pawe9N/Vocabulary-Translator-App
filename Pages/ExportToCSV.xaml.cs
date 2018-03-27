@@ -45,7 +45,7 @@ namespace Vocabulary_Translator_App
         //enable button to make export to csv
         private void EnableExport(string directory, string path)
         {
-            if(directory != "You choose ... dictionary" && path != "You choose ... path")
+            if(directory != "You selected ... dictionary" && path != "You selected ... path")
             {
                 ExportButton.IsEnabled = true;
             }

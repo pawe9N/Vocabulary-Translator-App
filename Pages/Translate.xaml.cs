@@ -23,23 +23,35 @@ namespace Vocabulary_Translator_App
         }
 
         //translate two string with translate google app
-        public void GTranslateText()
+        public async void GTranslateText()
         {
             if (!String.IsNullOrEmpty(ToTranslateText.Text))
             {
-                //erasing white spaces from string thats appear more then one time
-                Regex regex = new Regex("[ ]{2,}");
-                string toTranslateText = regex.Replace(ToTranslateText.Text.Trim(), " ");
+                try
+                {
+                    //erasing white spaces from string thats appear more then one time
+                    Regex regex = new Regex("[ ]{2,}");
+                    string toTranslateText = regex.Replace(ToTranslateText.Text.Trim(), " ");
 
-                //creating language pair to translation
-                string languagePair = StringOperation.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
+                    //creating language pair to translation
+                    string languagePair = StringOperation.CreatingLangugePair(fromLanguageButton.Content.ToString(), toLanguageButton.Content.ToString());
 
-                //translation
-                GTranslator translator = new GTranslator(toTranslateText, languagePair);
+                    //translation
+                    GTranslator translator = new GTranslator(toTranslateText, languagePair);
 
-                //added translation to textblock
-                TranslatedText.Text = translator.translation;
-                ToTranslateText.Text = toTranslateText;
+                    //added translation to textblock
+                    TranslatedText.Text = translator.translation;
+                    ToTranslateText.Text = toTranslateText;
+                }
+                catch
+                {
+                    //if no internet connection
+                    MessageDialog msg = new MessageDialog("You don't have an internet connection!");
+                    await msg.ShowAsync();
+
+                    ToTranslateText.Text = "";
+                    TranslatedText.Text = "";
+                }
             }
         }
 

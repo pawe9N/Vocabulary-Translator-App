@@ -24,7 +24,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Width="720" Height="384" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
-            <TextBlock Text="Export dictionary to CSV file" FontSize="56" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+            <StackPanel Background="White">
+                <TextBlock Text="Export dictionary to CSV file" FontSize="56" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,20,0,25"/>
+            </StackPanel>
             <Button Name="DictionariesButton"  Content="Dictionaries" Width="720" FontSize="30">
                 <Button.Flyout>
                     <MenuFlyout x:Name="DictionariesMenu" Placement="Bottom"/>
