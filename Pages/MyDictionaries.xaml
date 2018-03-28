@@ -22,55 +22,66 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Width="720" Height="386" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="380" Height="380"/>
-            <StackPanel Width="240" Orientation="Vertical">
-                <Line Stroke="Black" X1="0" X2="480" Y1="1" Y2="1"/>
-                <TextBlock Text="Tables" FontSize="48" Height="80" TextAlignment="Center" Padding="0,5,0,0"/>
-                <Line Stroke="Black" X1="0" X2="240" Y1="1" Y2="1"/>
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView Name="Tables" Height="298" SelectionMode="Single" BorderBrush="Black" SelectionChanged="Tables_SelectionChanged">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="22"/>
-                                <Setter Property="Background" Value="#EDC7B7"/>
-                                <Setter Property="Foreground" Value="#AC3B61"/>
-                                <Setter Property="FontFamily" Value="Forte"/>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-                </ScrollViewer>
-                <Line Stroke="Black" X1="0" X2="240" Y1="1" Y2="1"/>
+        <Border BorderBrush="Black" BorderThickness="0 1 0 1">
+            <StackPanel Width="718" Height="386" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Border BorderBrush="Black" BorderThickness="1 1 0 1">
+                    
+                    <StackPanel Width="240" Orientation="Vertical">
+                        <Border BorderBrush="Black" BorderThickness="0 0 0 1">
+                            <TextBlock Text="Tables" FontSize="48" Height="78.5" TextAlignment="Center" Padding="0,12,0,0"/>
+                        </Border>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ListView Name="Tables" Height="298" SelectionMode="Single" BorderBrush="Black" SelectionChanged="Tables_SelectionChanged">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="22"/>
+                                        <Setter Property="Background" Value="#EDC7B7"/>
+                                        <Setter Property="Foreground" Value="#AC3B61"/>
+                                        <Setter Property="FontFamily" Value="Forte"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                            </ListView>
+                        </ScrollViewer>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderBrush="Black" BorderThickness="1 1 1 1">
+                    <StackPanel Width="474" VerticalAlignment="Top" Height="720" Orientation="Vertical">
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1">
+                            <StackPanel Orientation="Vertical" Height="78.5">
+                                <Border BorderBrush="Black" BorderThickness="0 0 0 1">
+                                    <TextBlock Text="Words" FontSize="32" TextAlignment="Center"/>
+                                </Border>
+                                <StackPanel Orientation="Horizontal" Width="480">
+                                    <Border BorderBrush="Black" BorderThickness="0 0 1 0">
+                                        <TextBlock Text="Word" FontSize="24" TextAlignment="Center" Width="233"/>
+                                    </Border>
+                                    <TextBlock Text="Translation" FontSize="24" TextAlignment="Center" Width="233"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ListView Name="Words" Height="297" Width="460" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="22"/>
+                                        <Setter Property="Background" Value="#EDC7B7"/>
+                                        <Setter Property="Foreground" Value="#AC3B61"/>
+                                        <Setter Property="FontFamily" Value="Buxton Sketch"/>
+                                        <Setter Property="Margin" Value="0,0,0,5"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                            </ListView>
+                        </ScrollViewer>
+
+                    </StackPanel>
+                </Border>
+
             </StackPanel>
-            <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="380" Height="380"/>
-            <StackPanel Width="474" VerticalAlignment="Top">
-                <Line Stroke="Black" X1="0" X2="474" Y1="1" Y2="1"/>
-                <TextBlock Text="Words" FontSize="32" TextAlignment="Center"/>
-                <Line Stroke="Black" X1="0" X2="474" Y1="1" Y2="1"/>
-                <StackPanel Orientation="Horizontal" Width="480">
-                    <TextBlock Text="Word" FontSize="26" TextAlignment="Center" Width="242"/>
-                    <TextBlock Text="Translation" FontSize="26" TextAlignment="Center" Width="232"/>
-                </StackPanel>
-                <Line Stroke="Black" X1="0" X2="480" Y1="1" Y2="1"/>
-                <StackPanel Orientation="Horizontal" Width="480">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"> 
-                        <ListView Name="Words" Height="296" Width="480" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                    <Setter Property="FontSize" Value="22"/>
-                                    <Setter Property="Background" Value="#EDC7B7"/>
-                                    <Setter Property="Foreground" Value="#AC3B61"/>
-                                    <Setter Property="FontFamily" Value="Buxton Sketch"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                        </ListView>
-                    </ScrollViewer>
-                </StackPanel>
-                <Line Stroke="Black" X1="0" X2="474" Y1="1" Y2="1"/>
-            </StackPanel>
-            <Line Stroke="Black" X1="1" X2="1" Y1="0" Y2="380" Height="380"/>
-        </StackPanel>
+        </Border>
     </Grid>
 </Page>

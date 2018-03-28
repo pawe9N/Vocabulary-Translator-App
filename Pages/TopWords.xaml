@@ -38,7 +38,7 @@
                 </Button.Flyout>
             </Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <ListView Name="Words" Height="270" Width="240" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
+                <ListView Name="Words" Height="270" Width="260" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -48,7 +48,7 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
-                <ListView Name="Translation" Height="260" Width="240" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top" FontFamily="Forte">
+                <ListView Name="Translation" Height="260" Width="260" SelectionMode="None" BorderBrush="Black" VerticalAlignment="Top" FontFamily="Forte">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
