@@ -1,5 +1,5 @@
 # Vocabulary Translator App
-This app is created for purpose of learning C# and UWP applications.
+This app was created for purpose of learning C# and UWP applications.
 
 ## Getting Started
 
