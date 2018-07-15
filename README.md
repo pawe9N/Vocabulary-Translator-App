@@ -1,6 +1,9 @@
 # Vocabulary Translator App
 This app was created for purpose of learning C# and UWP applications.
 
+## Description of application
+This app can translate words from diffrent languages (like polish, english, spanish, german, french). It can also add unknown words to your database and export them to .csv file. Besides it can show you most translated words in any language in top words section.
+
 ## Getting Started
 
 If you want to use this program, you have to download package from release tab.
